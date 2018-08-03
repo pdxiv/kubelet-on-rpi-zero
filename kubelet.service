@@ -1,0 +1,15 @@
+[Unit]
+Description=kubelet
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/kubelet \
+  --allow-privileged=true \
+  --enable-server=false \
+  --hostname-override=127.0.0.1 \
+  --config=/etc/kubernetes/config.yaml \
+  --pod-infra-container-image="k8s.gcr.io/pause-arm:3.1" \
+  -v2
+
+[Install]
+WantedBy=multi-user.target

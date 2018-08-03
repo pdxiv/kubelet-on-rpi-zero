@@ -1,3 +1,24 @@
 # kubelet-on-rpi-zero
 Attempts at building kubernetes that works with Raspberry Pi Zero, for use with the Cluster Hat.
-Contains two files. File 1 works on a Raspberry pi 1. *Supposedly*, file 2 should work on a Raspberry pi Zero, but as of yet untried.
+
+Unzip kubelet1.zip and move the kubelet binary to /usr/bin.
+```
+unzip kubelet1.zip
+sudo mv kubelet /usr/bin/kubelet
+```
+Move the kubelet.service unit file to the systemd configuration directory.
+```
+sudo mv kubelet.service /etc/systemd/system/
+```
+Start the kubelet service.
+```
+sudo systemctl daemon-reload
+
+sudo systemctl enable kubelet
+
+sudo systemctl start kubelet
+```
+Verify that the kubelet is running.
+```
+sudo systemctl status kubelet
+```
