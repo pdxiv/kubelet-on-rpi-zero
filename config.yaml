@@ -8,3 +8,4 @@ authentication:
    enabled: true
 authorization:
   mode: AlwaysAllow
+failSwapOn: false
