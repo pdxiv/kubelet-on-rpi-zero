@@ -10,6 +10,16 @@ Move the kubelet.service unit file to the systemd configuration directory.
 ```
 sudo mv kubelet.service /etc/systemd/system/
 ```
+
+
+Create configuration and manifests directory.
+```
+sudo mkdir -p /etc/kubernetes/manifests
+```
+Move Kubelet config.yaml to /etc/kubernetes directory:
+```
+sudo mv config.yaml /etc/kubernetes/
+```
 Start the kubelet service.
 ```
 sudo systemctl daemon-reload
