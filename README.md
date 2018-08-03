@@ -1,6 +1,12 @@
 # kubelet-on-rpi-zero
 Attempts at building kubernetes that works with Raspberry Pi Zero, for use with the Cluster Hat.
 
+Mount Cgroup subsystems.
+```
+GRUB_CMDLINE_LINUX="cgroup_enable=cpuset cgroup_enable=memory"
+update-grub
+reboot
+```
 Install docker.
 ```
 curl -sSL https://get.docker.com | sh
