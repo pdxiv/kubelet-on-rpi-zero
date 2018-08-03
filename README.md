@@ -4,21 +4,19 @@ Attempts at building kubernetes that works with Raspberry Pi Zero, for use with 
 Unzip kubelet1.zip and move the kubelet binary to /usr/bin.
 ```
 unzip kubelet1.zip
-sudo mv kubelet /usr/bin/kubelet
+sudo cp kubelet /usr/bin/kubelet
 ```
 Move the kubelet.service unit file to the systemd configuration directory.
 ```
-sudo mv kubelet.service /etc/systemd/system/
+sudo cp kubelet.service /etc/systemd/system/
 ```
-
-
 Create configuration and manifests directory.
 ```
 sudo mkdir -p /etc/kubernetes/manifests
 ```
 Move Kubelet config.yaml to /etc/kubernetes directory:
 ```
-sudo mv config.yaml /etc/kubernetes/
+sudo cp config.yaml /etc/kubernetes/
 ```
 Start the kubelet service.
 ```
