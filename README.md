@@ -1,6 +1,11 @@
 # kubelet-on-rpi-zero
 Attempts at building kubernetes that works with Raspberry Pi Zero, for use with the Cluster Hat.
 
+Install docker.
+```
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker pi
+```
 Unzip kubelet.zip and move the kubelet binary to /usr/bin.
 ```
 unzip kubelet.zip
