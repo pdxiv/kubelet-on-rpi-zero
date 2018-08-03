@@ -1,43 +1,40 @@
 # kubelet-on-rpi-zero
 Attempts at building kubernetes that works with Raspberry Pi Zero, for use with the Cluster Hat.
 
-Mount Cgroup subsystems.
+## Mount Cgroup subsystems "memory" and "cpuset"
+Add `cgroup_enable=cpuset cgroup_enable=memory` to `/boot/cmdline.txt` and reboot.
 ```
-GRUB_CMDLINE_LINUX="cgroup_enable=cpuset cgroup_enable=memory"
-update-grub
-reboot
+sudo reboot now
 ```
-Install docker.
+## Install docker
 ```
 curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker pi
 ```
-Unzip kubelet.zip and move the kubelet binary to /usr/bin.
+## Unzip kubelet.zip and move the kubelet binary to /usr/bin
 ```
 unzip kubelet.zip
 sudo mv kubelet /usr/bin/kubelet
 ```
-Move the kubelet.service unit file to the systemd configuration directory.
+## Move the kubelet.service unit file to the systemd configuration directory
 ```
 sudo cp kubelet.service /etc/systemd/system/
 ```
-Create configuration and manifests directory.
+## Create configuration and manifests directory
 ```
 sudo mkdir -p /etc/kubernetes/manifests
 ```
-Move Kubelet config.yaml to /etc/kubernetes directory:
+## Move Kubelet config.yaml to /etc/kubernetes directory
 ```
 sudo cp config.yaml /etc/kubernetes/
 ```
-Start the kubelet service.
+## Start the kubelet service
 ```
 sudo systemctl daemon-reload
-
 sudo systemctl enable kubelet
-
 sudo systemctl start kubelet
 ```
-Verify that the kubelet is running.
+## Verify that the kubelet is running
 ```
 sudo systemctl status kubelet
 ```
